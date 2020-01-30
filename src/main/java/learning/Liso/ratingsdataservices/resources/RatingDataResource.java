@@ -21,11 +21,25 @@ public class RatingDataResource {
     @RequestMapping("users/{userId}")
     public UserRating getRatingInfo(@PathVariable("userId") String userId){
 
-        List<Rating> ratings = Arrays.asList(
-                new Rating("1234", 4),
-                new Rating("2345", 3),
-                new Rating("174734", 2)
-        );
+        
+        List<Rating> ratings = Arrays.asList();
+        
+        if (userId.equals("1")){
+            ratings = Arrays.asList(
+                    new Rating("Flutura ne kabinen time", 4),
+                    new Rating("Beni ecen vete", 3)
+            );
+        }
+        else if (userId.equals("2")){
+            ratings = Arrays.asList(
+                    new Rating("Kapedani", 5),
+                    new Rating("Zonja nga qyteti", 7)
+            );
+        }
+        else{
+            ratings = Arrays.asList();
+        }
+        
         UserRating userRating = new UserRating();
         userRating.setUserRating(ratings);
         return userRating;
